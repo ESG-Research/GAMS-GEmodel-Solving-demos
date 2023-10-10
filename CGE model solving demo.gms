@@ -10,6 +10,7 @@ acnt('total')=NO;
 alias (ac,acp),(a,ap),(c,cp),(f,fp),(acnt,acntp);
 
 
+* The value of entrys in the SAM matrix can be modified to your data frame.
 
 table sam(ac,acp)
            sec1      sec2      sec3      com1    com2        com3    lab     cap
@@ -51,7 +52,7 @@ total     512956  277890  176705   94979             2999          364460      1
 
 
 
-*检查行列是否相等
+*Check that the SAM matrix we input is consistent.
 parameters
 
 samchk(ac);
@@ -59,29 +60,29 @@ samCHK(acnt)=sum(acntp,SAM(acntp,acnt))-sum(acntp,SAM(acnt,acntp));
 
 display samchk;
 
-*各个弹性参数，需根据自己需求替换
-parameter  rhoAa(a)   /sec1 =   0.8,   sec2 = 0.8, sec3 = 0.8/
-           rhoVA(a)   /sec1     0.5,   sec2   0.5, sec3   0.5/
-           rhoQq(c)   /com1     3.0,   com2   4.0, com3   4.0/
-           rhoCET(c)  /com1     5.0,   com2   3.0, com3   2.0/
+*Elastic parameters derived from estimates.
+parameter  rhoAa(a)   /sec1 =   0.5,   sec2 = 0.6, sec3 = 0.6/
+           rhoVA(a)   /sec1     0.3,   sec2   0.5, sec3   0.5/
+           rhoQq(c)   /com1     2.0,   com2   2.0, com3   2.0/
+           rhoCET(c)  /com1     3.6,   com2   2.5, com3   1.0/
            
-*定义参数
+*Definition of parameters
 parameters
 sax(a,c) 
-scaleAa(a)       QA的CES函数参数
-deltaAa(a)       QA的CES函数份额参数
-scaleQq(c)       QQ的Arminton函数参数
-deltaQq(c)       QQ的Arminton函数份额参数
-scaleCET(c)      CET函数参数
-deltaCET(c)      CET函数份额参数
-scaleAVA(a)      VA的CES函数参数
-deltaVA(a)       VA的CES函数劳动份额参数
-ica(c,a)         中间投入的投入产出系数
-shrh(c)          居民收入对商品c的消费支出份额
-shrg(c)          政府收入中对商品c的消费支出份额
-tih              居民的所得税税率
-tiEnt            企业所得税税率
-tval(a)          对劳动和资本投入的增值税税率
+scaleAa(a)       'The parameters of the CES function of QA'
+deltaAa(a)       'The parameters of the CES function share of QA'
+scaleQq(c)       'Parameters of QQ's Arminton function'
+deltaQq(c)       'The parameters of QQ's Arminton function share'
+scaleCET(c)      'The parameters of the CET function'
+deltaCET(c)      'The parameters of the CET function share'
+scaleAVA(a)      'Parameters of the CES function of VA'
+deltaVA(a)       'The parameters of the labor share of the CES function of VA'
+ica(c,a)         'Input-output coefficient of intermediate inputs'
+shrh(c)          'Consumption expenditure share of household income to commodity c'
+shrg(c)          'The share of consumer spending on good c in government revenue'
+tih              'Income tax rates for residents'
+tiEnt            'Corporate income tax rate'
+tval(a)          'VAT rates on Labour and capital inputs'
 transfrhg0       政府对居民的转移收入
 transfrhent0     企业对居民h的转移收入
 transfrhrow0     国外对居民h的转移收入
