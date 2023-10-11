@@ -83,11 +83,11 @@ shrg(c)          'The share of consumer spending on good c in government revenue
 tih              'Income tax rates for residents'
 tiEnt            'Corporate income tax rate'
 tval(a)          'VAT rates on Labour and capital inputs'
-transfrhg0       政府对居民的转移收入
-transfrhent0     企业对居民h的转移收入
-transfrhrow0     国外对居民h的转移收入
-transfrgRow0     国外对政府的转移支付
-transfrRowG0     政府对国外的转移支付
+transfrhg0       'Government transfer income to residents'
+transfrhent0     'Company transfer income residents'
+transfrhrow0     'Foreign transfer income residents'
+transfrgRow0     'Foreign transfer income to Government'
+transfrRowG0     'Foreign transfer income to resident'
 shifhk           资本收入分配给居民的份额
 shifentk         资本收入分配给企业的份额
 mpc              居民h的边际消费倾向
