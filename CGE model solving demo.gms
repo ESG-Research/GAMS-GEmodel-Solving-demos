@@ -1,4 +1,4 @@
-
+* Programmed by Zhaojie，2023 Fall.
 set ac     /sec1,sec2,sec3,com1,com2,com3,lab,cap,hh,ent,gov,vat,tariff,invsav,row,total/;
 set a(ac)  /sec1,sec2,sec3/;
 set c(ac)  /com1,com2,com3/;
