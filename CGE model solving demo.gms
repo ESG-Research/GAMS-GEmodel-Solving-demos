@@ -409,7 +409,7 @@ QLSAGG.l=QLSAGG0;
 QKSAGG.l=QKSAGG0;
 FINV.l = FINV0;
 
-*Keynesian closure 
+*Keynesian ‘Closure’ or ‘loop’
 WL.fx=1;
 WK.fx=1;
 QINV.fx(c)=QINV0(c);
@@ -417,7 +417,7 @@ QINV.fx(c)=QINV0(c);
 FSAV.fx=FSAV0;
 EXR.fx = EXR0;
 
-*Excute optimization operation
+*Execute optimization operation
 model cge  /all/;
 solve cge using mcp;
 
