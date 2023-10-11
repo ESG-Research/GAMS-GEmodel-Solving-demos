@@ -122,18 +122,18 @@ QKSAGG0          'Total supply of capital quantity'
 YH0              'Household income'
 EH0              'Total household consumption'
 QH0(c)           'Household' demand for commodity c'
-YENT0            企业收入
-EINV0            投资总额
-QINV0(c)         对商品c的投资的最终需求
-ENTSAV0          企业储蓄
-YG0              政府收入
-EG0              政府支出
-QG0(c)           政府对商品c的需求
-GSAV0            政府储蓄
-PGDP0            国民生产总值价格指数
-GDP0             实际国民生产总值
-FSAV0            国外储蓄
-EG0chk           用来检查和EGO是否一致
+YENT0            'Enterprise revenue'
+EINV0            'Total Investment'
+QINV0(c)         'Final demand for investment in commodity c'
+ENTSAV0          'Enterprise savings'
+YG0              'Government revenue'
+EG0              'Government expenditures'
+QG0(c)           'Government demand for commodity c'
+GSAV0            'Government saving'
+PGDP0            'Gross domestic product price index'
+GDP0             'Real Gross national product'
+FSAV0            'Foreign savings'
+EG0chk           'Used to check for consistency with EGO'
 vadded0          总增值，用它和支出法两个方法来检查是否一致
 GDP0chk          增值法和支出法两个方法是否一致
 FINV0            国外资本的投资收益
