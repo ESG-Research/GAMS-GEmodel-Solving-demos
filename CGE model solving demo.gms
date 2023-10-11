@@ -134,14 +134,14 @@ PGDP0            'Gross domestic product price index'
 GDP0             'Real Gross national product'
 FSAV0            'Foreign savings'
 EG0chk           'Used to check for consistency with EGO'
-vadded0          总增值，用它和支出法两个方法来检查是否一致
-GDP0chk          增值法和支出法两个方法是否一致
-FINV0            国外资本的投资收益
+vadded0          'Total value added, use it and the expenditure method to check whether the consistent hold'
+GDP0chk          'Whether the value-added method and the expenditure method are consistent'
+FINV0            'Investment income of foreign kapital'
 
 ;
 
 
-*参数赋值与校调
+*Parameter assignment and calibration
 
 PX0(c)=1;
 QX0(c)=sum(a,sam(a,c))/PX0(c);
@@ -166,7 +166,7 @@ QA0(a)=sam('total',a)/PA0(a);
 QLSAGG0=sam('total','lab')/WL0;
 QKSAGG0=sam('total','cap')/WK0;
 
-*国外部分
+*Foreign module
 tm(c)$sam('row',c)=sam('tariff',c)/sam('row',c);
 pwm(c)$sam('row',c)=PM0(c)/((1+tm(c))*EXR0);
 QM0(c)=(sam('row',c)+sam('tariff',c))/PM0(c);
@@ -178,7 +178,7 @@ QD0(c)=QX0(c)-QE0(c);
 QQ0(c)=QD0(c)+QM0(c);
 PQ0(c)=(sam(c,'total')-sam(c,'row'))/QQ0(c);
 
-*生产模块的参数
+*Production module parameters
 QINT0(c,a)=sam(c,a)/PQ0(c);
 QINTA0(a)=SUM(c,QINT0(c,a));
 ica(c,a)=QINT0(c,a)/QINTA0(a);
