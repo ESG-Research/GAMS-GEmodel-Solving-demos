@@ -88,40 +88,40 @@ transfrhent0     'Company transfer income residents'
 transfrhrow0     'Foreign transfer income residents'
 transfrgRow0     'Foreign transfer income to Government'
 transfrRowG0     'Foreign transfer income to resident'
-shifhk           资本收入分配给居民的份额
-shifentk         资本收入分配给企业的份额
-mpc              居民h的边际消费倾向
-tm(c)            进口税率
-te(c)            出口税率
-PA0(a)           生产活动a的价格
-QA0(a)           生产活动a的数量
-PVA0(a)          增值部分汇总价格
-QVA0(a)          增值部分汇总量
-PINTA0(a)        中间投入总价格
-QINTA0(a)        中间投入总量
-QINT0(c,a)       中间投入个量
-QLD0(a)          劳动需求
-QKD0(a)          资本需求
-WL0              劳动价格
-WK0              资本价格
-PX0(c)           生产活动产出的QX商品c的价格
-QX0(c)           生产活动产出的QX商品的数量
-PQ0(c)           国内市场商品c的价格
-QQ0(c)           国内市场商品c的数量
-PM0(c)           进口商品c的价格
-QM0(c)           进口商品c的数量
-PE0(c)           国内生产商品c出口的价格
-QE0(c)           国内生产商品c出口的数量
-PD0(c)           国内生产国内使用商品c的价格
-QD0(c)           国内生产国内使用商品c的数量
-EXR0             汇率
-pwm(c)           进口商品c的国际价格
-pwe(c)           出口生产活动c商品的国际价格
-QLSAGG0          劳动量总供应
-QKSAGG0          资本量总供应
-YH0              居民收入
-EH0              居民消费总额
-QH0(c)           居民对商品c的需求
+shifhk           'The share of capital income distributed to residents'
+shifentk         'The share of capital income allocated to the enterprise'
+mpc              'The share of capital income allocated to the enterprise'
+tm(c)            'Tax rate import'
+te(c)            'Tax rate outport'
+PA0(a)           'The price of production activity-a'
+QA0(a)           'The quantity of production activity-a'
+PVA0(a)          'Value added part of the summary price'
+QVA0(a)          'Total value added'
+PINTA0(a)        'Total price of intermediate inputs'
+QINTA0(a)        'Total quantity of intermediate input'
+QINT0(c,a)       'Individual quantity of intermediate input'
+QLD0(a)          'Quantity of labour demand'
+QKD0(a)          'Quantity of Kapital demand'
+WL0              'price of labor'
+WK0              'price of kapital'
+PX0(c)           'The price of the QX commodity c produced by the production activity'
+QX0(c)           'The quantity of the QX commodity c produced by the production activity'
+PQ0(c)           'The price of the Q commodity c produced by the production activity'
+QQ0(c)           'The quantity of the Q commodity c produced by the production activity'
+PM0(c)           'The price of imported commodity c'
+QM0(c)           'The quantity of imported commodity c'
+PE0(c)           'The export price of the domestically produced commodity c'
+QE0(c)           'The export quantity of the domestically produced commodity c'
+PD0(c)           'Domestic production The price of commodity c for domestic use'
+QD0(c)           'Domestic production The quantity of commodity c for domestic use'
+EXR0             'exchange rate'
+pwm(c)           'The international price of imported commodity c'
+pwe(c)           'The international price of commodity c for export production activities'
+QLSAGG0          'Total supply of labor'
+QKSAGG0          'Total supply of capital quantity'
+YH0              'Household income'
+EH0              'Total household consumption'
+QH0(c)           'Household' demand for commodity c'
 YENT0            企业收入
 EINV0            投资总额
 QINV0(c)         对商品c的投资的最终需求
