@@ -188,16 +188,16 @@ scaleAa(a)=QA0(a)/(deltaAa(a)*QVA0(a)**rhoAa(a)+(1-deltaAa(a))*QINTA0(a)**rhoAa(
 deltaVA(a)=((1+tval(a))*WL0)*QLD0(a)**(1-rhoVA(a))/(((1+tval(a))*WL0)*QLD0(a)**(1-rhoVA(a))+((1+tval(a))*WK0)*QKD0(a)**(1-rhoVA(a)));
 scaleAVA(a)=QVA0(a)/(deltaVA(a)*QLD0(a)**rhoVA(a)+(1-deltaVA(a))*QKD0(a)**rhoVA(a))**(1/rhoVA(a));
 
-*CET内销和出口之间的选择
+*CET accounting between domestic sales and exports
 deltaCET(c)=PD0(c)*QD0(c)**(1-rhoCET(c))/(PD0(c)*QD0(c)**(1-rhoCET(c))+PE0(c)*QE0(c)**(1-rhoCET(c)));
 scaleCET(c)=QX0(c)/(deltaCET(c)*QD0(c)**rhoCET(c)+(1-deltaCET(c))*QE0(c)**rhoCET(c))**(1/rhoCET(c));
 
 
-*Armington Condition 在国内生产和进口之间的选择
+*Armington Condition CES Constant Elastic Substitution
 deltaQq(c)=PD0(c)*QD0(c)**(1-rhoQQ(c))/(PD0(c)*QD0(c)**(1-rhoQq(c))+PM0(c)*QM0(c)**(1-rhoQq(c)));
 scaleQQ(c)=QQ0(c)/(deltaQq(c)*QD0(c)**rhoQq(c)+(1-deltaQq(c))*QM0(c)**rhoQq(c))**(1/rhoQq(c));
 
-*其他参数和外生变量的校调和估算
+*Calibration and estimation of other parameters and exogenous variables
 transfrhg0=sam('hh','gov');
 transfrhent0=sam('hh','ent');
 transfrhrow0=sam('hh','row');
@@ -247,16 +247,16 @@ EG,GSAV,QLSAGG,QKSAGG,FSAV,GDP,PGDP,EXR,walras,FINV;
 
 
 
-*定义等式
+*Defining equality
 equation
-*33个
+*Totally 33 equitions
 QAfn(a),QAFOCeq(a),PAeq(a),QVAfn(a),QVAFOC(a),PVAeq(a),QINTfn(c,a),PINTAeq(a),CETfn(c),CETFOC(c),
 PXCET(c),PEeq(c),QQfn(c),QQFOC(c),PQeq(c),PMeq(c),YHeq,QHeq(c),YENTeq,ENTSAVeq,
 EINVeq,Ygeq,QGeq(c),GSAVeq,ComEqui(c),Leq,Keq,FEXeq,ISeq,GDPeq,
 PGDPeq,QAQXeq(a),PXeq(c),KKeq
 ;
 
-*生产模块
+*Production module
 
 QAfn(a)..
 QA(a)=e=scaleAa(a)*(deltaAa(a)*QVA(a)**rhoAa(a)+(1-deltaAa(a))*QINTA(a)**rhoAa(a))**(1/rhoAa(a));
@@ -292,7 +292,7 @@ PXeq(c)..
 PX(c)=e=sum(a,PA(a)*sax(a,c));
 
 
-*国际部分
+*International part
 CETfn(c)..
 QX(c)=e=scaleCET(c)*(deltaCET(c)*QD(c)**rhoCET(c)+(1-deltaCET(c))*QE(c)**rhoCET(c))**(1/rhoCET(c));
 
@@ -317,7 +317,7 @@ PQ(c)*QQ(c)=e=PD(c)*QD(c)+PM(c)*QM(c);
 PMeq(c)..
 PM(c)=e=pwm(c)*(1+tm(c))*EXR;
 
-*居民
+*Households
 
 YHeq..
 YH=e=WL*QLSAGG+shifhk*WK*QKSAGG+transfrhent0+transfrhg0+transfrhrow0*EXR;
@@ -325,7 +325,7 @@ YH=e=WL*QLSAGG+shifhk*WK*QKSAGG+transfrhent0+transfrhg0+transfrhrow0*EXR;
 QHeq(c)..
 PQ(c)*QH(c)=e=shrh(c)*mpc*(1-tih)*YH;
 
-*企业
+*Enterprises
 YENTeq..
 YENT=e=shifentk*WK*QKSAGG;
 
@@ -335,7 +335,7 @@ ENTSAV=e=(1-tiEnt)*YENT-transfrhEnt0;
 EINVeq..
 EINV=e=sum(c,PQ(c)*QINV(c));
 
-*政府
+*Government
 YGeq..
 YG=e=sum(a,tval(a)*(WL*QLD(a)+WK*QKD(a)))+tih*YH+tiEnt*YENT+sum(c,tm(c)*pwm(c)*QM(c)*EXR)+transfrgrow0*EXR;
 
@@ -348,7 +348,7 @@ GSAV=e=YG-EG;
 ComEqui(c)..
 QQ(c)=e=sum(a,QINT(c,a))+QH(c)+QINV(c)+QG(c);
 
-*要素市场
+*Input factors market
 Leq..
 Sum(a,QLD(a))=e=QLSAGG;
 
@@ -358,11 +358,11 @@ Sum(a,QKD(a))=e=QKSAGG;
 KKeq..
 YENT+shifhk*WK*QKSAGG+FINV=e=QKSAGG;
 
-*国际市场
+*International market
 FEXeq..
 sum(c,pwm(c)*QM(c))+transfrRowG0+FINV=e=sum(c,pwe(c)*QE(c))+transfrgrow0+FSAV+transfrhrow0;
 
-*储蓄等于投资
+*Saving equal to investment
 ISeq..
 EINV=e=(1-mpc)*(1-tih)*YH+ENTSAV+GSAV+FSAV*EXR+walras;
 
@@ -373,7 +373,7 @@ PGDPeq..
 PGDP*GDP=e=sum(c,PQ(c)*(QH(c)+QINV(c)+QG(c)))+sum(c,PE(c)*QE(c))-sum(c,PM(c)*QM(c))+sum(c,tm(c)*pwm(c)*QM(c)*EXR);
 
  
-*赋予变量的初始值
+*The initial value assigned to a variable
 
 PA.l(a)=PA0(a);
 PVA.l(a)=PVA0(a);
@@ -409,7 +409,7 @@ QLSAGG.l=QLSAGG0;
 QKSAGG.l=QKSAGG0;
 FINV.l = FINV0;
 
-*凯恩斯闭合，也可随意换，怎么换参考张欣的书
+*Keynesian closure 
 WL.fx=1;
 WK.fx=1;
 QINV.fx(c)=QINV0(c);
@@ -417,11 +417,11 @@ QINV.fx(c)=QINV0(c);
 FSAV.fx=FSAV0;
 EXR.fx = EXR0;
 
-*执行优化程序
+*Excute optimization operation
 model cge  /all/;
 solve cge using mcp;
 
-*模拟税收冲击，需要根据自己的冲击来修改
+*Simulated tax subsidy policy shock
 tval(a)=0.01;
 
 model sim1  /all/;
